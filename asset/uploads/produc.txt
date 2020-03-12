@@ -1,0 +1,2327 @@
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>elParah.store - Online Retail Store Manager </title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="../../favicon/android-chrome-256x256.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Online Retail Manager">
+    <link rel="apple-touch-icon-precomposed" href="../../favicon/apple-touch-icon.png">
+
+
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="fav">
+    <meta name="msapplication-TileColor" content="#DAAB59">
+
+    <link rel="shortcut icon" href="../../favicon/favicon-32x32.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+    <!--
+        <link href="placeholder-loading.css" rel="stylesheet" type="text/css"/>
+    -->
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="../../favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.amber-lime.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .settings_menu {
+            background-color: #ffffff;
+            margin-top: 30px;
+            color: #333333;
+            bottom: 0;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            min-height: 200px;
+        }
+        .shadow-ng {
+            -webkit-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.16);
+            -moz-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.16);
+            box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.16);
+        }
+
+        .btn-warning {
+            background-color: #DAAB59;
+        }
+        .mdl-layout__header {
+            background-color: #DAAB59 !important;
+        }
+        .search-box {
+            border-radius: 15px;
+        }
+        .pro-item {
+            border-radius: 10px;
+            height: 150px;
+        }
+        .pro-item-name {
+            font-size: 12px;
+            letter-spacing: 0.01em;
+            line-height: 14px;
+        }
+        .pro-item img {
+            height: 85px;
+        }
+        .add-icon {
+            width: 30px;
+            height: 30px;
+            /*border: 2px solid #DAAB59;*/
+            border-radius: 50%;
+            top: 1px;
+            float: right;
+            position: absolute;
+            right: 2px;
+            color: #DAAB59;
+        }
+
+        .added-icon {
+            width: 40px;
+            height: 40px;
+            top: -10px;
+            float: right;
+            position: absolute;
+            right: 0;
+            color: #28a745;
+        }
+
+        .btnPCount .badge {
+            top: -14px;
+            float: right;
+            position: relative;
+            right: -22px;
+        }
+        .btn-outline-warning {
+            color: #DAAB59;
+            border-color: #DAAB59;
+        }
+        .btn-minus {
+            width: 100%;
+            font-size: 26px;
+            height: 25px;
+            width: 25px;
+            line-height: 0px;
+        }
+
+        .btn-plus {
+            width: 100%;
+            font-size: 26px;
+            height: 25px;
+            width: 25px;
+            line-height: 1px;
+            font-size: 20px;
+        }
+        .small-quantity {
+            padding: 0.125rem 0.5rem;
+            height: 30px;
+        }
+
+        .small-quantity1 {
+            padding: 0.125rem 0.5rem;
+            height: 38px;
+        }
+
+        .cost-quantity {
+            width: 100px;
+        }
+
+        .lowerSection {
+            background-color: #ffffff;
+            margin-top: 10px;
+            color: #000000;
+            border-top-left-radius: 60px;
+            border-top-right-radius: 60px;
+            padding-bottom: 80px;
+        }
+        #startButton{
+            width: 30px;
+            height: 30px;
+            background-color: lawngreen;
+            border: 1px solid lawngreen;
+        }
+        #resetButton{
+            width: 30px;
+            height: 30px;
+            background-color: orangered;
+            border: 1px solid orangered;
+        }
+
+        .video_canvas {
+            padding: 1em;
+            border: 0.25em solid;
+            position: relative;
+        }
+        .video_canvas::before, .video_canvas::after {
+            content: "";
+            display: block;
+            position: absolute;
+            background: #fff;
+        }
+        .video_canvas::before {
+            top: -0.3em;
+            bottom: -0.3em;
+            left: 1em;
+            right: 1em;
+        }
+        .video_canvas::after {
+            left: -0.3em;
+            right: -0.3em;
+            top: 1em;
+            bottom: 1em;
+        }
+        .video_canvas #video {
+            position: relative;
+            z-index: 1;
+        }
+        .back-icon {
+            top: 0px;
+            left: 0px;
+            position: absolute;
+            color: #333;
+            font-weight: 700;
+            z-index: 2000;
+        }
+        .form-control:disabled, .form-control[readonly] {
+            background-color: #ffffff;
+            opacity: 1;
+        }
+        .wrap-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .text-loading {
+            color: #fbae17;
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+        .bounceball {
+            position: relative;
+            display: inline-block;
+            height: 37px;
+            width: 15px;
+        }
+        .bounceball:before {
+            position: absolute;
+            content: '';
+            display: block;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #fbae17;
+            -webkit-transform-origin: 50%;
+            transform-origin: 50%;
+            -webkit-animation: bounce 500ms alternate infinite ease;
+            animation: bounce 500ms alternate infinite ease;
+        }
+
+        @-webkit-keyframes bounce {
+            0% {
+                top: 30px;
+                height: 5px;
+                border-radius: 60px 60px 20px 20px;
+                -webkit-transform: scaleX(2);
+                transform: scaleX(2);
+            }
+            35% {
+                height: 15px;
+                border-radius: 50%;
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+            }
+            100% {
+                top: 0;
+            }
+        }
+
+        @keyframes bounce {
+            0% {
+                top: 30px;
+                height: 5px;
+                border-radius: 60px 60px 20px 20px;
+                -webkit-transform: scaleX(2);
+                transform: scaleX(2);
+            }
+            35% {
+                height: 15px;
+                border-radius: 50%;
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+            }
+            100% {
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base" style="background-color: #f8f9fa!important;">
+<!-- Simple header with fixed tabs. -->
+<div  class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+    <header class="mdl-layout__header" id="page-header">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title mx-auto text-center pr-5">    &nbsp;&nbsp;&nbsp; <span id=""></span>Stock</span>
+        </div>
+
+
+    </header>
+
+    <div class="android-drawer mdl-layout__drawer">
+        <span class="mdl-layout-title animated slideInLeft" style=" display: flex;position: relative;background: #DAAB59;height: 160px;">
+           <img class="android-logo-image" src="../../images/el-parah.png"  style="width:90%;height: 40%;MARGIN: auto;" >
+        </span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="https://elparah.store/menu.html"> <i class="material-icons">view_module</i>Menu</a>
+
+            <a class="mdl-navigation__link" href="https://elparah.store/admin.html"> <i class="material-icons">view_module</i> Advance Menu</a>
+            <a class="mdl-navigation__link" href="logout.php"><i class="material-icons">directions_walk</i>Log out</a>
+            <div class="android-drawer-separator"></div>
+            <a class="mdl-navigation__link" href="store_old.html"> <i class="material-icons">store</i>Sell</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content" style="background-color: #F8F8F8;">
+        <div class="page-content container-fluid" >
+            <div class="page-content row" id="topLoad" onscroll="scrollFunction()">
+                <div class="btn btn-sm rounded-circle shadow-ng mr-1 p-0 text-center" style="width: 60px;height: 60px;background-color: #DAAB59;right: 2%;position: fixed;z-index: 2000;bottom: 15%;" id="topRow">
+                    <a href="#topLoad" style="color: #FFFFFF;">
+                        <i class="material-icons m-2" style="font-size: 40px;">
+                            arrow_upward
+                        </i>
+                    </a>
+                </div>
+
+                <div class="col-3 col-md-3">
+                </div>
+                <div class="col-12 col-md-6" style=" padding: 0px;margin:0px; ">
+                    <div style="padding-top: 220px;" class="wrap-loading">
+                        <div class="loading">
+                            <div class="bounceball"></div>
+                            <div class="text-loading">NOW LOADING</div>
+                        </div>
+                    </div>
+                    <!--View for adding products-->
+                    <div id="addProcess">
+                        <p class="text-center my-2" style="background-color: #FFFFFF;">Select all the products you have in your shop</p>
+                        <div class = "mdl-tabs mdl-js-tabs">
+                            <div class="mdl-tabs__tab-bar"  style="padding: 0px;margin: 0px; background-color: #FFFFFF;">
+                                <a style="text-decoration: none" href="#fixed-tab-1" id="search_mode" class="mdl-tabs__tab is-active"  style="padding: 0px;margin: 0px;"><i class="fa fa-search" aria-hidden="true"></i><span class="label_aj ml-1">Search mode</span></a>
+                                <a style="text-decoration: none" id="barcode_mode" href="#fixed-tab-2" class="mdl-tabs__tab"> <i class="fa fa-barcode" aria-hidden="true"></i><span class="label_aj ml-1">Barcode mode</span></a>
+                            </div>
+                            <section class="mdl-tabs__panel is-active animated slideInRight faster" id="fixed-tab-1" style="padding-top: 10px;">
+                                <div class="row shadow p-3 mb-5 bg-white rounded mx-1">
+                                    <div class="col-12 col-md-12">
+                                        <p class="font-weight-bolder text-center m-1 text-darker">Popular products sold by provision stores</p>
+                                        <div class="row my-2 px-0">
+                                            <div class="w-50 input-group">
+                                                <input type="text" oninput="fetchProduct(this.value)" id="productSearch" class="form-control search-box text-center" placeholder="Search for a product">
+                                            </div>
+                                            <div id="clearSearch" style="display:none;position: absolute;left: 42%;z-index: 2000;top: 40px;"><i class="material-icons" onclick="clearSearch()">cancel</i></div>
+                                            <div class="w-50 pl-2">
+                                                <div class="form-group w-100 mx-auto">
+                                                    <select onchange="setTypePulled2(this.value)" name="stock_type" class="form-control" id="search_type">
+                                                        <option value="5">All products</option>
+                                                        <option value="3">Stocked products</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-3" id="productList">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="mdl-tabs__panel animated slideInRight faster" id="fixed-tab-2" style="padding-top: 10px;">
+                                <div id="barOverlay" class="text-center text-white my-auto" style="position: absolute;height: 100%;z-index: 1000;width: 100%;background-color: #919191;opacity: 0.4;">
+                                    <p class="m-auto h-100 text-center w-100 font-weight-bold" style="margin-top: 30% !important;font-size: 20px;color: black;: 1.2 !important;">Click to scan barcode of product</p>
+                                </div>
+                                <div class="row p-3 mb-5 mx-1">
+
+                                    <div class="col-12 col-md-12">
+                                        <div class="video_canvas">
+                                            <video id="video" width="260" height="200" muted></video>
+                                        </div>
+
+                                        <div class="bg-white" style="position:fixed; right: 0; bottom: 60px; left: 0; z-index: 1030; height: 100px; border-top-left-radius: 60px; border-top-right-radius: 60px;">
+                                            <h6 class="text-dark font-weight-bold text-center mt-2">Add products</h6>
+                                            <p class="text-center my-1" id="barError" style="color: red"></p>
+                                            <div class="row text-center mx-auto w-75 mt-2">
+                                                <div class="col-10 col-sm-10 pr-0">
+                                                    <input type="text" id="productBarcode" class="form-control search-box text-center" placeholder="Enter barcode number">
+                                                </div>
+                                                <div class="col-2 col-sm-2 pl-1">
+                                                    <button id="search2btn" class="btn btn-warning rounded-circle">
+                                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!--<div class="text-center mx-auto w-75 mt-2">
+                                            </div>-->
+                                            <div class="text-center mx-auto w-75 mt-2" style="display: none;" id="sourceSelectPanel">
+                                                <select id="sourceSelect" class="form-control text-center" style="max-width:400px; border-radius: 15px;">
+                                                </select>
+                                            </div>
+
+
+
+                                        </div>
+
+                                        <!--
+                                                                                <p class="font-weight-bolder text-center m-1 text-darker">Find products by scanning barcode</p>
+                                        -->
+                                        <div class="row w-100 m-2">
+                                            <!--<div class="input-group">
+                                                <input type="text" oninput="fetchProductB(this.value)" id="productBarcode" class="form-control search-box text-center" placeholder="Scan Barcode" />
+                                            </div>-->
+                                            <!--
+                                                                                        <p id="barError" style="color: red"></p>
+                                            -->
+                                        </div>
+
+                                        <div class="row mt-4" id="productListB">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="text-center fixed-bottom bg-white border-top py-3" style="height: 60px">
+                            <button style="background-color: #DAAB59; font-size: 14px;" type="button" class="btn btnPCount btn-warning btn-wd px-3 py-2 font-weight-bold text-dark" >&nbsp;&nbsp;&nbsp; View added products <span id="counter" class="badge badge-light"></span></button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                    <!--View for viewing added products-->
+                    <div id="viewProcess" style="display: none">
+                        <div class="row p-3 mb-5 bg-white mx-1">
+                            <div class="col-12 col-md-12">
+                                <h6 class="font-weight-bold text-center m-1 text-dark add_h6">Added Products(<span id="pa_count"></span>)</h6>
+                                <div class="row my-2 px-0">
+                                    <div class="w-50 input-group">
+                                        <!--<span>
+                                          <i class="fa fa-user-circle-o text-left" aria-hidden="true"></i>
+                                        </span>-->
+                                        <input type="text" oninput="fetchStockProduct(this.value)" id="productSearch2" class="form-control search-box text-center" placeholder="Search for a product" />
+
+                                    </div>
+                                    <div id="clearSearch2" style="display: none; position: absolute;left: 42%;z-index: 2000;top: 40px;"><i class="material-icons" onclick="clearSearch2()">cancel</i></div>
+
+                                    <div class="w-50 pl-2">
+                                        <div class="form-group w-100 mx-auto">
+                                            <select onchange="setTypePulled(this.value)" name="stock_type" class="form-control" id="stock_type">
+                                                <option value="0">All products</option>
+                                                <option value="1">Incomplete products</option>
+                                                <option value="2">Unstocked</option>
+                                                <option value="3">Stocked</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-4" id="productList2">
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center fixed-bottom bg-white border-top py-3" style="height: 60px">
+                            <button style="background-color: #FFFFFF; border-color: #DAAB59;color: #DAAB59;  font-size: 14px;" type="button" class="btn btnClose btn-warning btn-wd px-5 py-2 mx-1 font-weight-bold">Back</button>
+                            <button data-toggle="modal" data-target="#finishModal" id="finishModalL" style="background-color: #DAAB59; font-size: 14px;" type="button" class="btn btn-warning btn-wd px-5 py-2 mx-1 font-weight-bold text-dark">Finish</button>
+                            <div class="clearfix"></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                    <!--View for viewing added products-->
+                    <div id="addedProcessP" style="display: none">
+                        <div class="row p-3 mb-5 bg-white mx-1">
+                            <div class="col-12 col-md-12 ml-4">
+                                <span class="back-icon"><i class="material-icons" style="font-weight: 700;">keyboard_backspace</i></span>
+                                <span class="back-icon"><i class="material-icons" style="font-weight: 700;">keyboard_backspace</i></span>
+                            </div>
+                            <div class="col-12 col-md-12">
+                                <h6 class="font-weight-bold text-center m-1 text-dark">Added Products</h6>
+                                <div class="row w-100 m-2">
+                                    <div class="input-group">
+                                        <!--<span>
+                                          <i class="fa fa-user-circle-o text-left" aria-hidden="true"></i>
+                                        </span>-->
+                                        <input type="text" oninput="fetchStockProduct(this.value)" id="productSearch4" class="form-control search-box text-center" placeholder="Search for a product" />
+                                    </div>
+                                </div>
+
+                                <div class="row mt-4" id="productList4">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center fixed-bottom bg-white border-top py-3" style="height: 60px">
+                            <button style="background-color: #DAAB59; font-size: 14px;" type="button" class="btn btnDone btn-warning btn-wd px-5 py-2 font-weight-bold text-dark">Finish adding stock</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                    <!--View for viewing added products-->
+                    <div id="finishView" style="display: none; height: 100vh;" class="bg-white">
+                        <div class="row p-3 mb-5 bg-white mx-0">
+                            <div class="col-12 col-md-12">
+                                <div class="mt-5 page__img text-center w-100 p-0 mx-auto mb-2 pb-2">
+                                    <img class="img-fluid" src="../complete.png" alt="Settings">
+                                </div>
+
+                                <div class="shadow-lg settings_menu mt-5 mx-0 py-4 fixed-bottom w-100">
+                                    <div class="text-center mt-4 mx-auto w-75">
+                                        <h5 class="mb-2 font-weight-bold text-dark">Congratulations...</h5>
+
+                                        <span class="mx-auto mb-2 font-weight-bold text-dark" style="font-size: 14px;">Your shop is all stocked up.</span>
+
+                                        <div style="background-color: #DAAB59;color: #0e2231;border-radius: 10px;" class="row text-center mx-auto w-75 mt-2 mb-4 py-3 px-4 rounded-pill border border-warning">
+                                            <a href="https://elparah.store/onboarding/sales/sales.html" style="color: #333333; font-size: 16px;" class="mx-auto font-weight-bold">Start selling!</a>
+                                        </div>
+
+                                        <span class="mx-auto mb-4 font-weight-bold text-dark" style="font-size: 12px;">You can add another shop location, warehouse and attendants in settings</span>
+
+                                        <div style="background-color: #ffffff; color: #DAAB59;border-radius: 10px;" class="row text-center mx-auto w-75 mt-2 py-3 px-4 rounded-pill border border-warning">
+                                            <a href="#" style="color: #DAAB59; font-size: 16px;" class="mx-auto font-weight-bold">Go to settings</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Add stock quantity-->
+                    <div id="addStockProcess" style="display: none;background-color: #FFFFFF;">
+                        <div class="row p-1 pt-3" style="background-color: #FFFFFF;">
+                            <!--<div class="col-12 col-md-12 ml-4">
+                                <span class="back-icon"><i class="material-icons" style="font-weight: 700;">keyboard_backspace</i></span>
+                            </div>-->
+                            <img id="cover_image" src="" class="img-fluid mx-auto w-50 h-75">
+                        </div>
+
+                        <div class="row bg-white lowerSection shadow-ng">
+                            <div class="col-8 col-md-8 mx-auto">
+                                <h5 id="cover_name" class="text-center text-dark font-weight-bold"></h5>
+
+                                <!--<div class="row my-3" style="height: 35px;">
+                                    <div class="pl-0 col-5 h-100 my-auto">
+                                        <span style="font-size: 15px" class="h-100 align-middle text-left my-auto font-weight-bold text-dark">Quantity</span>
+                                    </div>
+                                    <div class="h-100 col-7 my-auto">
+                                        <div class="h-100 row my-auto align-middle">
+                                            <div class="h-100 col-3 col-md-3 px-0 mx-auto rounded-circle" style="/* padding-top:25px */">
+                                                <button class="btn btn-outline-danger rounded-circle btn-sm my-1 btn-minus" onclick="min()" style="width:100%;font-size: 26px;height: 25px;width: 25px;line-height: 0px;">-</button>
+                                            </div>
+                                            <div class="col-6 col-md-6 px-0">
+                                                <div class="form-group">
+                                                    <input type="text" class="text-center form-control form-control-lg small-quantity" id="quantity" aria-describedby="emailHelp" value="1">
+                                                </div>
+                                            </div>
+                                            <div class="col-3 col-md-3 px-0 pull-right" style="/* padding-top:25px */">
+                                                <button class="my-1 pull-right btn btn-outline-success rounded-circle btn-sm btn-plus" onclick="plus()" style="width: 100%;font-size: 26px;height: 25px;width: 25px;line-height: 1px;font-size:20px;margin-top: 2px;">+</button>
+                                            </div>
+
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <div class="form-group row my-3" style="height: 35px;">
+                                    <label style="font-size: 15px" for="quantity" class="pl-0 col-5 col-sm-5 col-form-label h-100 align-middle text-left my-auto font-weight-bold text-dark">Quantity</label>
+                                    <div class="h-100 col-sm-7 col-7 my-auto">
+                                        <div class="h-100 row my-auto align-middle">
+                                            <div class="h-100 col-3 col-md-3 px-0 mx-auto rounded-circle" style="/* padding-top:25px */">
+                                                <button class="btn btn-outline-danger rounded-circle btn-sm my-1 btn-minus" onclick="min()" style="width:100%;font-size: 26px;height: 25px;width: 25px;line-height: 0px;">-</button>
+                                            </div>
+                                            <div class="col-6 col-md-6 px-0">
+                                                <div class="form-group">
+                                                    <input type="text" class="text-center form-control form-control-lg small-quantity" id="quantity" aria-describedby="emailHelp">
+                                                </div>
+                                            </div>
+                                            <div class="col-3 col-md-3 px-0 pull-right" style="/* padding-top:25px */">
+                                                <button class="my-1 pull-right btn btn-outline-success rounded-circle btn-sm btn-plus" onclick="plus()" style="width: 100%;font-size: 26px;height: 25px;width: 25px;line-height: 1px;font-size:20px;margin-top: 2px;">+</button>
+                                            </div>
+
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row my-3" style="height: 35px;">
+                                    <label style="font-size: 13px" for="lowest_stock" class="pl-0 col-5 col-sm-5 col-form-label h-100 align-middle text-left my-auto font-weight-bold text-dark">Lowest stock</label>
+
+                                    <div class="h-100 col-sm-7 col-7 my-auto">
+                                        <div class="h-100 row my-auto align-middle">
+                                            <div class="col-3 col-md-3"></div>
+                                            <div class="col-6 col-md-6 px-0">
+                                                <div class="form-group">
+                                                    <input type="text" class="text-center form-control form-control-lg small-quantity" id="lowest_stock" aria-describedby="emailHelp" value="1">
+                                                </div>
+                                            </div>
+                                            <div data-toggle="tooltip" data-placement="top" title="You'll receive an alert when the stock is less than this number" class="text-dark col-3 col-md-3 px-0 pull-right text-center my-2" style="font-size: 20px;">
+                                                <i class="fa fa-info" aria-hidden="true"></i>
+                                            </div>
+
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row my-3" style="height: 35px;">
+                                    <label style="font-size: 15px" for="lowest_stock" class="pl-0 col-5 col-sm-5 col-form-label h-100 align-middle text-left my-auto font-weight-bold text-dark">Cost price</label>
+
+                                    <div class="h-100 col-sm-7 col-7 my-auto">
+                                        <div class="h-100 row my-auto align-middle">
+                                            <div class="my-auto p-0 w-100 col-3 col-md-3 text-right text-dark font-weight-light"></div>
+                                            <div class="col-6 col-md-6 px-0">
+                                                <div class="form-group">
+                                                    <input type="text" class="text-center form-control form-control-lg small-quantity" id="cost_price" aria-describedby="emailHelp" value="">
+                                                </div>
+                                            </div>
+                                            <div data-toggle="modal" data-target="#costPriceModal" class="text-dark col-3 col-md-3 px-0 pull-right text-center my-0" style="font-size: 20px;line-height: 5px;">
+                                                <i class="fa fa-calculator" aria-hidden="true"></i><br><span style="font-size: 8px;">Calculator</span>
+                                            </div>
+
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row my-3" style="height: 35px;">
+                                    <label style="font-size: 15px" for="lowest_stock" class="pl-0 col-5 col-sm-5 col-form-label h-100 align-middle text-left my-auto font-weight-bold text-dark">Selling price</label>
+
+                                    <div class="h-100 col-sm-7 col-7 my-auto">
+                                        <div class="h-100 row my-auto align-middle">
+                                            <div class="col-3 col-md-3"></div>
+                                            <div class="col-6 col-md-6 px-0">
+                                                <div class="form-group">
+                                                    <input type="text" class="text-center form-control form-control-lg small-quantity" id="selling_price" aria-describedby="emailHelp" value="">
+                                                </div>
+                                            </div>
+                                            <div class="text-dark col-3 col-md-3 px-0 pull-right text-center my-auto" style="font-size: 20px;">
+                                            </div>
+
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="text-center fixed-bottom bg-white border-top py-3" style="height: 60px">
+                            <button style="background-color: #FFFFFF; border-color: #DAAB59;color: #DAAB59;  font-size: 14px;" type="button" class="btn shadow btnClose1 btn-warning btn-wd px-5 py-2 mx-1 font-weight-bold">Cancel</button>
+                            <button id="add_Stock" style="background-color: #DAAB59; font-size: 14px;" type="button" class="btn btn-warning btn-wd px-5 py-2 mx-1 font-weight-bold text-dark">Save info</button>
+                            <div class="clearfix"></div>
+                        </div>
+                        <!-- toast -->
+
+
+                    </div>
+
+                    <!--Change stock quantity-->
+                    <div id="changeStockProcess" style="display: none;background-color: #FEF7EE;">
+                        <div class="row p-1 pt-3 pb-5" style="background-color: #FEF7EE;">
+                            <div class="col-12 col-md-12 ml-4">
+                                <span class="back-icon"><i class="material-icons" style="font-weight: 700;">keyboard_backspace</i></span>
+                            </div>
+
+                            <img id="cover_image1" src="" class="img-fluid mx-auto w-50 h-75">
+                        </div>
+
+                        <div class="row bg-white lowerSection pt-4">
+                            <div class="col-8 col-md-8 mx-auto">
+                                <h5 id="cover_name1" class="text-center text-dark font-weight-bold"></h5>
+                                <p id="packs_add" style="font-size: 16px;" class="font-weight-light text-dark mb-3 text-center"></p>
+
+                                <div class="form-group row my-3" style="height: 35px;">
+                                    <label style="font-size: 15px" for="quantity" class="pl-0 col-12 col-sm-12 col-form-label h-100 align-middle text-center mx-auto font-weight-bold text-dark">Quantity</label>
+                                    <div class="h-100 col-sm-12 col-12 my-auto">
+                                        <div class="h-100 row my-auto align-middle">
+                                            <div class="h-100 col-3 col-md-3 px-0 mx-auto rounded-circle pull-right text-right" style="/* padding-top:25px */">
+                                                <button class="btn btn-outline-danger rounded-circle btn-sm my-1 btn-minus" onclick="min1()" style="width:100%;font-size: 26px;height: 25px;width: 25px;line-height: 0px;">-</button>
+                                            </div>
+                                            <div class="col-6 col-md-6 px-0">
+                                                <div class="form-group mx-2">
+                                                    <input type="text" class="text-center form-control form-control-lg small-quantity" id="c_quantity" aria-describedby="emailHelp" value="1">
+                                                </div>
+                                            </div>
+                                            <div class="col-3 col-md-3 px-0 mx-auto pull-left text-left" style="/* padding-top:25px */">
+                                                <button class="my-1 btn btn-outline-success rounded-circle btn-sm btn-plus" onclick="plus1()" style="width: 100%;font-size: 26px;height: 25px;width: 25px;line-height: 1px;font-size:20px;margin-top: 2px;">+</button>
+                                            </div>
+
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="text-center fixed-bottom bg-white border-top py-3" style="height: 60px">
+                            <button style="background-color: #FFFFFF; border-color: #DAAB59;color: #DAAB59;  font-size: 14px;" type="button" class="btn shadow btnClose btn-warning btn-wd px-4 py-2 font-weight-bold">Delete record</button>
+                            <button id="change_Stock" style="background-color: #DAAB59; font-size: 14px;" type="button" class="btn btn-warning btn-wd px-4 py-2 font-weight-bold text-dark">Save</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                    <!--add product latest-->
+                    <div id="quickAddProduct" style="background-color: rgb(255, 255, 255); display: none;">
+                        <div class="row p-0 pt-0 mx-0 text-center w-100 shadow-ng">
+                            <h5 class="text-center mx-auto w-100 my-3 text-dark font-weight-bold">Total stock : <span id="pro_q"></span></h5>
+                        </div>
+                        <div class="row p-1 pt-3">
+                            <img id="sample_q_image1" class="img-fluid mx-auto w-50 h-75" src="">
+                        </div>
+
+                        <div class="row mx-0 w-100 shadow-ng" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+                            <h5 class="text-dark font-weight-bold text-center mx-auto" id="cover_q_name1"></h5>
+
+                            <div class="rounded mb-3 mx-3" style="border: 1px solid #dee2e6!important;text-align: center;">
+                                <div class="form-group row my-3" style="height: 35px;">
+                                    <label style="font-size: 18px;" for="quantity" class="pl-0 col-12 col-sm-12 col-form-label h-100 align-middle text-center mx-auto font-weight-bold text-dark">Quantity counted</label>
+                                    <div class="h-100 col-sm-12 col-12 my-auto">
+                                        <div class="h-100 row my-auto align-middle">
+                                            <div class="col-3 col-md-3 px-0 mx-auto rounded-circle pull-right text-right" style="/* padding-top:25px */">
+                                                <button style="color: #D34343;" class="bg-white btn btn-outline-none btn-sm text-center" onclick="min4()"><i style="font-size: 30px;" class="material-icons text-center">remove_circle_outline</i></button>
+                                            </div>
+                                            <div class="col-6 col-md-6 px-0">
+                                                <div class="form-group mx-2">
+                                                    <input type="tel" class="text-center form-control form-control-lg small-quantity1" id="qa_quantity" aria-describedby="emailHelp">
+                                                </div>
+                                            </div>
+                                            <div class="col-3 col-md-3 px-0 mx-auto pull-left text-left" style="">
+                                                <button style="color: #53BF77; height: 38px !important;" class="bg-white pull-left mx-auto text-center btn btn-outline-none btn-sm py-2" onclick="plus4()"><i style="font-size: 30px;" class="pull-left material-icons">add_circle_outline</i></button>
+                                            </div>
+
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-5 w-100 mx-0" style="">
+                                    <label style="font-size: 18px;" for="quantity" class="pl-0 col-12 col-sm-12 col-form-label align-middle text-center mx-auto font-weight-bold text-dark">Selling price</label>
+                                    <div class="h-100 col-sm-12 col-12 my-auto mx-0 px-0">
+                                        <div class="h-100 row my-auto align-middle">
+                                            <div class="col-6 col-md-6 px-0 mx-auto">
+                                                <div class="form-group mx-2">
+                                                    <input type="tel" class="text-center form-control form-control-lg small-quantity1" id="q_selling_p" aria-describedby="emailHelp" value="">
+                                                </div>
+                                            </div>
+
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rounded mx-3 w-100" style="border: 1px solid #dee2e6!important; min-height: 150px;text-align: center;margin-bottom: 80px;">
+                                <h5 class="text-dark my-3 font-weight-bold text-center mx-auto">History</h5>
+
+                                <div id="historyRow" class="w-100 mx-auto text-center">
+                                </div>
+                            </div>
+                            <div class="text-center fixed-bottom bg-white border-top py-3" style="height: 60px">
+                                <button style="background-color: #FFFFFF; border-color: #DAAB59;color: #DAAB59;  font-size: 14px;" type="button" class="btn shadow btnClose btn-warning btn-wd px-5 py-2 mx-1 font-weight-bold">Cancel</button>
+                                <button onclick="add_to_cart3()" style="background-color: #DAAB59; font-size: 14px;" type="button" class="btn btn-warning btn-wd px-5 py-2 mx-1 font-weight-bold text-dark">Save</button>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 col-md-3">
+                    </div>
+                </div>
+            </div>
+            <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+                <div class="mdl-snackbar__text"></div>
+                <button class="mdl-snackbar__action" type="button"></button>
+            </div>
+            <input type="hidden" id="pro_id-hide" value="">
+            <input type="hidden" id="pro_detail_id-hide" value="">
+
+        </div>
+    </main>
+
+</div>
+<!--Modal for cost price calculator-->
+<!-- Modal -->
+<div class="modal fade" id="costPriceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content mx-3" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #FEF7EE;">
+                <h5 class="font-weight-bold text-dark modal-title text-center mx-auto" id="exampleModalCenterTitle">Cost Price Calculator </br>
+                    <span style="font-size: 16px; font-weight: 400;" id="p_name_u"></span>
+                </h5>
+
+            </div>
+            <div class="modal-body text-center">
+                <div class="form-group">
+                    <label class="text-dark font-weight-bold">Quantity on a roll/box</label>
+                    <input type="text" class="mx-auto text-center form-control form-control-lg small-quantity cost-quantity" id="c_rolls" value="">
+                </div>
+
+                <div class="form-group">
+                    <label class="text-dark font-weight-bold">How many boxes/packs did you buy?</label>
+                    <input type="text" class="mx-auto text-center form-control form-control-lg small-quantity cost-quantity" id="c_packs" value="">
+                </div>
+
+                <div class="form-group">
+                    <label class="text-dark font-weight-bold">What was the total cost of all the items?</label>
+                    <input type="text" class="mx-auto text-center form-control form-control-lg small-quantity cost-quantity" id="c_cost" value="">
+                </div>
+            </div>
+            <div class="modal-footer mx-auto">
+                <button type="button" class="btn btn-warning font-weight-bold" data-dismiss="modal">Close</button>
+                <button type="button" onclick="calculateCost()" class="btn btn-warning font-weight-bold">Calculate</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="finishModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content mx-3">
+            <div class="modal-body text-center">
+                <div class="text-center mx-auto w-75">
+                    <span class="mx-auto mb-2 font-weight-bold text-dark" style="font-size: 14px;">You have not stocked up all the products in the list.</span>
+
+                    <div class="row text-center mx-auto w-100 mt-2 mb-4 py-3 px-1">
+                        <span class="mx-auto w-100 font-weight-bold" style="font-size: 14px;">I want to complete stock info.</span>
+                        <button type="button" style="color: #DAAB59;font-size: 16px;border-color: #DAAB59;border-radius: 2px;" class="w-100 bg-white btn btn-warning font-weight-bold px-0 mx-1" data-dismiss="modal">Go back</button>
+                    </div>
+
+                    <div class="row text-center mx-auto w-100 mt-2 py-3 px-1 rounded-pill">
+                        <span class="mx-auto w-100 font-weight-bold">I have finished adding products.</span>
+                        <a style="background-color: #DAAB59;color: #333; font-size: 16px; border-radius: 2px;" class="mx-auto font-weight-bold w-100 py-2 btnDone">Finish</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Finish Modal-->
+<div class="modal fade" id="doneModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content mx-3">
+            <div class="modal-body text-center">
+                <div class="text-center mx-auto w-50 my-4">
+                    <div class="rounded-circle text-center mx-auto" style="width: 120px; height: 120px;background-color: #53BF77;">
+                        <i class="material-icons m-2 text-center" style="color: #ffffff;font-size: 100px;">done</i>
+                    </div>
+
+
+                    <h5 class="text-center text-dark font-weight-bold my-2">Success</h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Double Products modal-->
+<div class="modal fade" id="doubleProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content mx-3" style="border-radius: 10px;">
+
+            <h5 class="font-weight-light text-dark modal-title text-center mx-auto">Please select product </br>
+            </h5>
+            <div id="doubleProduct" class="modal-body text-center">
+
+            </div>
+            <div class="modal-footer mx-auto">
+                <button type="button" class="btn btn-warning font-weight-bold px-4" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Single product modal-->
+<div class="modal fade" id="SingleProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content mx-3" style="border-radius: 10px; background-color: #FFFFFF;">
+            <div id="singleProduct" class="modal-body text-center">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Show add product quantity modal-->
+<div class="modal fade show" id="SingleProductQuantityModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content mx-3" style="border-radius: 10px; background-color: #FFFFFF;">
+            <div class="modal-header" style="">
+                <h6 class="my-1 font-weight-bold text-dark modal-title text-center mx-auto">Add product quantity
+
+                </h6>
+
+            </div>
+            <div id="singleQProduct" class="modal-body text-center">
+                <div class="row p-1 pt-3">
+                    <img id="sample_q_image" class="img-fluid mx-auto w-50 h-75 shadow" src="">
+                </div>
+
+                <h5 class="text-dark font-weight-bold" id="cover_q_name"></h5>
+
+                <div class="form-group row my-3" style="height: 35px;">
+                    <label style="font-size: 18px;" for="quantity" class="pl-0 col-12 col-sm-12 col-form-label h-100 align-middle text-center mx-auto font-weight-light text-dark">Quantity</label>
+                    <div class="h-100 col-sm-12 col-12 my-auto">
+                        <div class="h-100 row my-auto align-middle">
+                            <div class="col-3 col-md-3 px-0 mx-auto rounded-circle pull-right text-right" style="/* padding-top:25px */">
+                                <button style="color: #D34343;" class="bg-white btn btn-outline-none btn-sm text-center" onclick="min2()"><i style="font-size: 30px;" class="material-icons text-center">remove_circle_outline</i></button>
+                            </div>
+                            <div class="col-6 col-md-6 px-0">
+                                <div class="form-group mx-2">
+                                    <input type="tel" class="text-center form-control form-control-lg small-quantity1" id="q_quantity" aria-describedby="emailHelp" value="1">
+                                </div>
+                            </div>
+                            <div class="col-3 col-md-3 px-0 mx-auto pull-left text-left" style="">
+                                <button style="color: #53BF77; height: 38px !important;" class="bg-white pull-left mx-auto text-center btn btn-outline-none btn-sm py-2" onclick="plus2()"><i style="font-size: 30px;" class="pull-left material-icons">add_circle_outline</i></button>
+                            </div>
+
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer text-center py-3 mx-auto mt-5 w-100 shadow-ng">
+                <button style="background-color: #FFFFFF; border-color: #DAAB59;  font-size: 14px;" type="button" class="btn shadow btnClose btn-warning btn-wd px-5 py-2 font-weight-bold text-dark" data-dismiss="modal">Close</button>
+                <button onclick="add_to_cart2()" style="background-color: #DAAB59; font-size: 14px;" type="button" class="btn btn-warning btn-wd px-4 py-2 font-weight-bold text-dark">Add quantity</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Cost price pass modal-->
+<div class="modal fade" id="CostPriceBypass" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content mx-3" style="border-radius: 10px; background-color: #FFFFFF;">
+            <div class="modal-body text-center">
+                <p class="text-dark font-weight-bold text-center m-2" style="font-size: 16px;">
+                    You did not add the cost price of this product. <br> You will not be able to know the profit on this product until it is recorded.
+                </p>
+
+                <div class="row mx-2 text-center">
+                    <button type="button" onclick="create_stockCP()" style="background-color: #FFFFFF; border-color: #DAAB59; color: #DAAB59;" class="my-2 w-100 btn btn-warning font-weight-bold">I do not remember the cost price</button>
+
+                    <button type="button" style="background-color: #DAAB59;" class="w-100 btn btn-warning font-weight-bold px-4 my-2" data-dismiss="modal">Fill it now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../cookie.js" type="text/javascript"></script>
+<script src="../date.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
+
+<script>
+    //Delete after scroll works...
+    //window.onscroll = function() {scrollFunction()};
+    window.addEventListener('scroll', function(){
+        scrollFunction();
+    });
+    function scrollFunction() {
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            $('#topRow').show();
+            console.log('me');
+        } else {
+            $('#topRow').hide();
+            console.log('this');
+        }
+    }
+
+    $('#search2btn').click(function () {
+        let search = $('#productBarcode').val();
+
+        if(search.length < 3){
+            return false;
+        }
+
+        scanCode(search);
+    });
+</script>
+
+<script type="text/javascript">
+    window.addEventListener('load', function () {
+        const beepSound = new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU'+Array(1e3).join(123));
+
+        let selectedDeviceId;
+        const codeReader = new ZXing.BrowserMultiFormatReader()
+
+        codeReader.getVideoInputDevices()
+            .then((videoInputDevices) => {
+                const sourceSelect = document.getElementById('sourceSelect');
+
+                selectedDeviceId = videoInputDevices[0].deviceId;
+                //console.log(selectedDeviceId);
+
+                var userAgent = navigator.userAgent.toLowerCase();
+                var Android = userAgent.indexOf("android") > -1;
+
+                if (videoInputDevices.length >= 1) {
+                    videoInputDevices.forEach((element) => {
+                        const sourceOption = document.createElement('option');
+                        sourceOption.text = element.label;
+                        sourceOption.value = element.deviceId;
+                        sourceSelect.appendChild(sourceOption)
+                    });
+                    sourceSelect.onchange = () => {
+                        selectedDeviceId = sourceSelect.value;
+                    };
+
+                    if(Android) {
+                        selectedDeviceId = videoInputDevices[1].deviceId
+                    }
+                    const sourceSelectPanel = document.getElementById('sourceSelectPanel');
+                    //sourceSelectPanel.style.display = 'block'
+                }
+                document.getElementById('barOverlay').addEventListener('click', () => {
+                    $('#barOverlay').hide();
+                    $('#barError').text('');
+                    codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
+                        if (result) {
+                            beepSound.play()
+                            console.log(result);
+                            $('#productBarcode').val(result.text);
+                            scanCode(result.text);
+                            codeReader.reset();
+                            $('#barOverlay').show();
+
+                        }
+                        if (err && !(err instanceof ZXing.NotFoundException)) {
+                            console.error(err);
+                            document.getElementById('barError').textContent = err;
+                        }
+                    })
+                    //console.log(`Started continous decode from camera with id ${selectedDeviceId}`)
+                })
+                /*document.getElementById('resetButton').addEventListener('click', () => {
+                    codeReader.reset();
+                    $('#productBarcode').val('');
+                    //console.log('Reset.');
+                })*/
+            })
+            .catch((err) => {
+                console.error(err)
+            })
+    })
+</script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    function calculateCost() {
+        let c_rolls = parseFloat($('#c_rolls').val());
+        let c_packs = parseFloat($('#c_packs').val());
+        let c_cost = parseFloat($('#c_cost').val());
+
+        if(c_rolls <= 0 || c_packs <=0 || c_cost <= 0 || isNaN(c_rolls) || isNaN(c_packs) || isNaN(c_cost)){
+            return false
+        }
+
+        var cost_price = (c_cost / (c_packs * c_rolls)).toFixed(2);
+
+        $('#cost_price').val(cost_price);
+        $('#c_rolls').val('');
+        $('#c_packs').val('');
+        $('#c_cost').val('');
+
+        $('#costPriceModal').modal('hide');
+    }
+</script>
+
+<script>
+    $('#costPriceModal').on('shown.bs.modal', function () {
+        $('#c_rolls').trigger('focus')
+    })
+    //Min and plus functions
+    function min()
+    {
+        let qn = document.getElementById('quantity').value
+
+        if(isNaN(qn) || qn.length<=0)
+        {
+            document.getElementById('quantity').value = 0;
+        }
+
+        let cp = parseInt(document.getElementById('quantity').value);
+        let new_cp = cp - 1;
+        document.getElementById('quantity').value = new_cp;
+        if( new_cp <= 0  )
+        {
+            document.getElementById('quantity').value = 0
+        }
+    }
+
+    function min1()
+    {
+        let qn = document.getElementById('c_quantity').value
+
+        if(isNaN(qn) || qn.length<=0)
+        {
+            document.getElementById('c_quantity').value = 0;
+        }
+
+        let cp = parseInt(document.getElementById('c_quantity').value);
+        let new_cp = cp - 1;
+        document.getElementById('c_quantity').value = new_cp;
+        if( new_cp <= 0  )
+        {
+            document.getElementById('c_quantity').value = 0
+        }
+    }
+
+    function min2()
+    {
+        let qn = document.getElementById('q_quantity').value
+
+        if(isNaN(qn) || qn.length<=0)
+        {
+            document.getElementById('q_quantity').value = 0;
+        }
+
+        let cp = parseInt(document.getElementById('q_quantity').value);
+        let new_cp = cp - 1;
+        document.getElementById('q_quantity').value = new_cp;
+        if( new_cp <= 0  )
+        {
+            document.getElementById('q_quantity').value = 0
+        }
+    }
+
+    function min4()
+    {
+        let qn = document.getElementById('qa_quantity').value
+
+        if(isNaN(qn) || qn.length<=0)
+        {
+            document.getElementById('qa_quantity').value = 0;
+        }
+
+        let cp = parseInt(document.getElementById('qa_quantity').value);
+        let new_cp = cp - 1;
+        document.getElementById('qa_quantity').value = new_cp;
+        if( new_cp <= 0  )
+        {
+            document.getElementById('qa_quantity').value = 0
+        }
+    }
+
+    function plus()
+    {
+        let qn = document.getElementById('quantity').value
+
+        if(isNaN(qn) || qn.length<=0)
+        {
+            document.getElementById('quantity').value = 0;
+        }
+
+
+        let cp = parseInt(document.getElementById('quantity').value);
+        let new_cp = cp + 1;
+        document.getElementById('quantity').value =  new_cp;
+    }
+
+    function plus4()
+    {
+        let qn = document.getElementById('qa_quantity').value
+
+        if(isNaN(qn) || qn.length<=0)
+        {
+            document.getElementById('qa_quantity').value = 0;
+        }
+
+
+        let cp = parseInt(document.getElementById('qa_quantity').value);
+        let new_cp = cp + 1;
+        document.getElementById('qa_quantity').value =  new_cp;
+    }
+
+    function plus1()
+    {
+        let qn = document.getElementById('c_quantity').value
+
+        if(isNaN(qn) || qn.length<=0)
+        {
+            document.getElementById('c_quantity').value = 0;
+        }
+
+
+        let cp = parseInt(document.getElementById('c_quantity').value);
+        let new_cp = cp + 1;
+        document.getElementById('c_quantity').value =  new_cp;
+    }
+
+    function plus2()
+    {
+        let qn = document.getElementById('q_quantity').value
+
+        if(isNaN(qn) || qn.length<=0)
+        {
+            document.getElementById('q_quantity').value = 0;
+        }
+
+
+        let cp = parseInt(document.getElementById('q_quantity').value);
+        let new_cp = cp + 1;
+        document.getElementById('q_quantity').value =  new_cp;
+    }
+</script>
+<script>
+    $('.btnPCount').click(function () {
+        $('#addProcess').hide();
+        $('#viewProcess').show();
+        $('.wrap-loading').show();
+    });
+
+    $('.btnClose').click(function () {
+        $('#addProcess').show();
+        $('#viewProcess').hide();
+        $('#quickAddProduct').hide();
+    });
+
+    $('.btnClose1').click(function () {
+        $('#addProcess').hide();
+
+
+        $('#quickAddProduct').hide();
+        $('#addStockProcess').hide();
+        $('#viewProcess').show();
+    });
+
+    $('.btnDone').click(function () {
+        $('#finishView').show();
+        $('#addedProcessP').hide();
+        $('#addProcess').hide();
+        $('#viewProcess').hide();
+        $('#page-header').hide();
+        $('#finishModal').modal('hide');
+    });
+</script>
+<script>
+    let counter = 0;
+    $('#counter').text(counter);
+    //Get all products of the store category
+    function getTypeProducts(){
+        getStoreProductFirst();
+        $('.wrap-loading').show();
+
+        fetch('https://elparah.store/onboarding/addProducts/store_type_products.php?q=4').then(response => {
+            return response.json();
+        }).then(data => {
+            localStorage.setItem('storeTypeProducts' , JSON.stringify(data));
+
+            $('#productList2').html('');
+
+            let stock = localStorage.getItem('stockProductsNew');
+            stock = JSON.parse(stock);
+            //console.log(stock.length);
+
+            data.forEach(function (product , index) {
+                var value = $(stock).filter(function (i , n){
+                    return n.pro_id == product.pro_id;
+                });
+
+                let me = Object.values(value)[0];
+
+                let image = product.image;
+                image = 'https://elparah.store/admin/upload/'+image;
+                let name = (product.pro_name).trim();
+
+                if(me){
+                    $('#productList').append('<div id="item-'+product.pro_id+'" class="col-4 col-md-4 mx-0 px-1 mb-2"><div class="shadow mb-2 bg-white pro-item"><img onclick="getProducter2('+product.pro_id+')" src="'+ image +'" class="img-'+product.pro_id+' img-fluid w-75 rounded mx-auto d-block pt-2"><h6 class="pb-2 mt-3 pro-item-name text-center text-capitalize font-weight-bold text-dark">'+ name +'</h6><div id="chk-'+product.pro_id+'" class="added-icon"><i onclick="addProductNew1('+product.pro_id+')" class="fa fa-check-circle" aria-hidden="true" style="font-size: 30px;padding: 22%;"></i></div></div></div>');
+                }else{
+                    $('#productList').append('<div id="item-'+product.pro_id+'" class="col-4 col-md-4 mx-0 px-1 mb-2"><div class="shadow mb-2 bg-white pro-item"><img onclick="addProductNew1('+product.pro_id+')" src="'+ image +'" class="img-'+product.pro_id+' img-fluid w-75 rounded mx-auto d-block pt-2"><h6 class="pb-2 mt-3 pro-item-name text-center text-capitalize font-weight-bold text-dark">'+ name +'</h6><div onclick="addProductNew1('+product.pro_id+')" id="adk-'+product.pro_id+'" class="add-icon"><i class="material-icons">add_circle_outline</i><!--<i class="fa fa-plus" aria-hidden="true" style="font-size: 18px;padding: 21.5%;"></i>--></div><div id="chk-'+product.pro_id+'" class="added-icon" style="display: none;"><i onclick="addProductNew1('+product.pro_id+')" class="fa fa-check-circle" aria-hidden="true" style="font-size: 30px;padding: 22%;"></i></div></div></div>');
+                }
+            });
+            $('.wrap-loading').hide();
+            //console.log(data);
+        }).catch(err => {
+            console.log('sorry, we could not fetch store type products');
+        })
+    }
+
+    function setTypePulled2(value){
+        console.log(value);
+        $('.wrap-loading').show();
+        if(value == 5){
+            getTypeProducts();
+        }else{
+            fetch('https://elparah.store/onboarding/addProducts/getProductsType.php?q='+value).then(response => {
+                return response.json();
+            }).then(data => {
+                $('#productList').html('');
+
+                if(value == 3){
+                    data.forEach(function (product , index) {
+                        let image = product.image;
+                        image = 'https://elparah.store/admin/upload/'+image;
+                        let name = (product.pro_name).trim();
+
+                        /*onclick="addProduct('+product.pro_id+')"*/
+                        $('#productList').append('<div id="item-'+product.pro_id+'" class="col-4 col-md-4 mx-0 px-1 mb-2"><div class="shadow mb-2 bg-white pro-item"><img onclick="getProducter2('+product.pro_id+')" src="'+ image +'" class="img-'+product.pro_id+' img-fluid w-75 rounded mx-auto d-block pt-2"><h6 class="pb-2 mt-3 pro-item-name text-center text-capitalize font-weight-bold text-dark">'+ name +'</h6><div id="chk-'+product.pro_id+'" class="added-icon"><i onclick="addProductNew1('+product.pro_id+')" class="fa fa-check-circle" aria-hidden="true" style="font-size: 30px;padding: 22%;"></i></div></div></div>');
+
+                    });
+                }
+
+                if(value == 5){
+                    data.forEach(function (product , index) {
+                        let image = product.image;
+                        image = 'https://elparah.store/admin/upload/'+image;
+                        let name = (product.pro_name).trim();
+
+                        /*onclick="addProduct('+product.pro_id+')"*/
+                        $('#productList').append('<div id="item-'+product.pro_id+'" class="col-4 col-md-4 mx-0 px-1 mb-2"><div class="shadow mb-2 bg-white pro-item"><img onclick="addProductNew1('+product.pro_id+')" src="'+ image +'" class="img-'+product.pro_id+' img-fluid w-75 rounded mx-auto d-block pt-2"><h6 class="pb-2 mt-3 pro-item-name text-center text-capitalize font-weight-bold text-dark">'+ name +'</h6><div onclick="addProductNew1('+product.pro_id+')" id="adk-'+product.pro_id+'" class="add-icon"><i class="material-icons">add_circle_outline</i><!--<i class="fa fa-plus" aria-hidden="true" style="font-size: 18px;padding: 21.5%;"></i>--></div><div id="chk-'+product.pro_id+'" class="added-icon" style="display: none;"><i onclick="addProductNew1('+product.pro_id+')" class="fa fa-check-circle" aria-hidden="true" style="font-size: 30px;padding: 22%;"></i></div></div></div>');
+
+                    });
+                }
+
+                $('.wrap-loading').hide();
+                //console.log(data);
+            }).catch(err => {
+                console.log('sorry, we could not fetch products');
+            })
+        }
+
+    }
+
+    //Get product for stocking
+    function addProductNew(id){
+        let url = 'https://elparah.store/stocking/donsing.php?q='+id;
+
+        fetch(url)
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let message = data;
+                console.log(message.pro_id);
+
+                if(message.success){
+                    $('#adk-'+id).hide();
+                    $('#chk-'+id).show();
+                    counter += 1;
+
+                    $('#counter').text('');
+                    $('#counter').text(counter);
+                    getProducter(message.pro_id);
+                }else{
+                    alert(message.error)
+                }
+            })
+            .catch(function(error) {
+                alert('Sorry product could not be added.')
+            });
+    }
+
+    //Get product for stocking
+    function addProductNew1(id){
+        let url = 'https://elparah.store/stocking/donsing.php?q='+id;
+
+        fetch(url)
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let message = data;
+                console.log(message.pro_id);
+
+                if(message.success){
+                    $('#adk-'+id).hide();
+                    $('#chk-'+id).show();
+                    counter += 1;
+
+                    let fnt = "getProducter2("+id+")";
+
+                    $('.img-'+id).attr("onclick",fnt);
+                    $('#counter').text('');
+                    $('#counter').text(counter);
+                    $('#doubleProductModal').modal('hide');
+                    $('#singleProductModal').modal('hide');
+                    getProducter2(message.pro_id);
+                }else{
+                    let p_state = confirm('Are you sure you want to remove this product from your store.');
+
+                    if(p_state === true){
+                        deleteProduct(id);
+                        let fnt = "addProductNew1("+id+")";
+
+                        $('.img-'+id).attr("onclick",fnt);
+                    }
+                }
+            })
+            .catch(function(error) {
+                alert('Sorry product could not be added.')
+            });
+    }
+
+    //Get single product for stocking
+    function getProducter(id){
+        fetch('https://elparah.store/onboarding/sales/select_single_product.php?q='+id).then(response => {
+            return response.json();
+        }).then(data => {
+
+            let product = data;
+            let image = product.image;
+            image = 'https://elparah.store/admin/upload/'+image;
+            let name = (product.pro_name).trim();
+
+            $('#pro_detail_id-hide').val(product.pro_detail_id);
+            $('#pro_id-hide').val(product.pro_id);
+            $('#cover_q_name').text('');
+            $('#p_name_u').text('');
+            $('#cover_q_name').text(name);
+            $('#p_name_u').text(product.pro_quantity);
+            $('#sample_q_image').attr('src' , image);
+
+            $('#SingleProductQuantityModal').modal('show');
+        }).catch(err => {
+            console.log('sorry, we could not fetch this product');
+        })
+
+    }
+
+    //Get the history of a product..
+    function getProductHistory(id){
+        fetch('https://elparah.store/onboarding/addProducts/productHistory.php?q='+id).then(response => {
+            return response.json();
+        }).then(data => {
+            let history = data;
+            let t_quan = 0;
+            //$('#pro_q').text('');
+
+            $('#historyRow').html('');
+
+
+            if(history.length === 0){
+                $('#historyRow').append('<span class="text-dark font-weight-bold font-italic text-center mx-auto">No previous quantity counted</span>')
+            }else{
+                history.forEach(function (row , index) {
+
+                    t_quan += parseFloat(row.st_quantity);
+                    $('#historyRow').append('<div id="stk-'+row.st_id+'" class="row rounded mx-3 my-2 p-2" style="border: 1px solid #dee2e6!important;min-height: 60px;"><div class="col-9 text-left pr-0"><h6 class="mt-1 mb-0 text-dark font-weight-bold" style="font-size: 18px;">'+row.st_quantity+' packs added</h6><span style="font-size: 15px;" class="font-weight-lighter text-dark">'+dateFormat(new Date(row.st_date), "dddd, mmmm dS, yyyy")+' <br> 5 : 15pm</span></div><div class="col-3"><button onclick="deleteStock('+row.st_id+','+row.st_product+')" type="button" class="btn btn-sm mr-1 bg-white" style="width: 60px;height: 60px;color: #333333;font-size: 12px;line-height: 12px;"><i class="material-icons" style="color: #DAAB59;font-size: 30px;">delete</i><br>Delete</button></div></div>');
+                });
+            }
+
+            //$('#pro_q').text(t_quan);
+        }).catch(err => {
+            console.log('sorry, we could not fetch history for this product');
+        })
+    }
+
+    //Delete stock...
+    function deleteStock(id,p_id){
+        let p_state = confirm('Are you sure you want to remove this stock from your store.');
+
+        if(p_state === true){
+            fetch('https://elparah.store/onboarding/addProducts/deleteStock.php?q='+id).then(response => {
+                return response.json();
+            }).then(data => {
+                if(data.success){
+                    getProductHistory(p_id)
+                }else{
+                    alert('OOPS. Something went wrong. Please try again!')
+                }
+            }).catch(err => {
+                console.log('sorry, we could not delete this stock');
+            })
+        }
+    }
+
+    function getProducter2(id){
+
+        fetch('https://elparah.store/onboarding/sales/select_single_product.php?q='+id).then(response => {
+            return response.json();
+        }).then(data => {
+            let product = data;
+            $('#addProcess').hide();
+            $('#viewProcess').hide();
+
+            let image = product.image;
+            image = 'https://elparah.store/admin/upload/'+image;
+            let name = (product.pro_name).trim();
+
+            $('#pro_detail_id-hide').val(product.pro_detail_id);
+            $('#pro_id-hide').val(product.pro_id);
+            $('#cover_q_name1').text('');
+
+            $('#pro_q').text('');
+            if(product.pro_quantity === null){
+                $('#pro_q').text(0);
+            }else{
+                $('#pro_q').text(product.pro_quantity);
+            }
+
+            let X_sp = product.Selling_Price;
+            X_sp = parseFloat(X_sp);
+
+            if(X_sp === null || X_sp === 0){
+                $('#q_selling_p').val('');
+            }else{
+                $('#q_selling_p').val(X_sp.toFixed(2));
+            }
+
+            $('#cover_q_name1').text(name);
+            $('#sample_q_image1').attr('src' , image);
+            //console.log(product);
+            getProductHistory(id);
+            $('#doubleProductModal').modal('hide');
+            $('#singleProductModal').modal('hide');
+            $('#quickAddProduct').show();
+        }).catch(err => {
+            console.log('sorry, we could not fetch this product');
+        })
+
+    }
+
+    //Add a product to a store function
+    function addProduct(id){
+        let url = 'https://elparah.store/stocking/download_single_new.php?q='+id;
+
+        fetch(url)
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let message = data;
+
+                if(message.success){
+                    $('#adk-'+id).hide();
+                    $('#chk-'+id).show();
+                    counter += 1;
+
+                    $('#counter').text('');
+                    $('#counter').text(counter);
+                }else{
+                    let p_state = confirm('Are you sure you want to remove this product from your store.');
+
+                    if(p_state === true){
+                        deleteProduct(id);
+                    }
+                    //alert(message.error)
+                }
+            })
+            .catch(function(error) {
+                alert('Sorry product could not be added.')
+            });
+    }
+
+    //Delete product from a store
+    function deleteProduct(id) {
+        let url = 'https://elparah.store/onboarding/addProducts/delete_product.php?q='+id;
+
+        fetch(url)
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let message = data;
+
+                if(message.success){
+                    $('#adk-'+id).show();
+                    $('#chk-'+id).hide();
+                    counter -= 1;
+
+                    $('#counter').text('');
+                    $('#counter').text(counter);
+                }else{
+                    alert('OOPS. Something went wrong. Please try again!')
+                }
+            })
+            .catch(function(error) {
+                alert('OOPS. Something went wrong. Please try again!')
+            });
+    }
+
+    function deleteProduct1(id) {
+        let p_state = confirm('Are you sure you want to remove this product from your store.');
+
+        if(p_state === true){
+            let url = 'https://elparah.store/onboarding/addProducts/delete_product.php?q='+id;
+
+            fetch(url)
+                .then((resp) => resp.json())
+                .then(function(data) {
+                    let message = data;
+
+                    if(message.success){
+                        $('#jhk-'+id).hide();
+                        counter -= 1;
+
+                        $('#counter').text('');
+                        $('#counter').text(counter);
+                    }else{
+                        alert('OOPS. Something went wrong. Please try again!')
+                    }
+                })
+                .catch(function(error) {
+                    alert('OOPS. Something went wrong. Please try again!')
+                });
+        }
+    }
+
+    //Add a product to a store function
+    function addProduct2(id){
+        let url = 'https://elparah.store/stocking/download_single_new.php?q='+id;
+
+        fetch(url)
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let message = data;
+
+                if(message.success){
+                    alert('Product has been added');
+                    $('#doubleProductModal').modal('hide');
+                    $('#SingleProductModal').modal('hide');
+                    counter += 1;
+
+                    $('#counter').text('');
+                    $('#counter').text(counter);
+                }else{
+                    alert(message.error)
+                }
+            })
+            .catch(function(error) {
+                alert('Sorry product could not be added.')
+            });
+    }
+
+    function setTypePulled(value){
+        fetch('https://elparah.store/onboarding/addProducts/getProductsType.php?q='+value).then(response => {
+            return response.json();
+        }).then(data => {
+            $('#productList2').html('');
+            data.forEach(function (product , index) {
+
+                let image = product.image;
+                image = 'https://elparah.store/admin/upload/'+image;
+                let name = (product.pro_name).trim();
+                let btn = '';
+                let quan = '';
+                if(product.pro_quantity !== null){
+                    quan = product.pro_quantity + ' packs counted';
+                }
+                btn = '<button onclick="getProduct('+product.pro_detail_id+')" type="button" class="btn btn-sm rounded-circle bg-white shadow-ng mr-1 p-0" style="width: 60px; height: 60px;color: #DAAB59;font-size: 10px;"><i class="material-icons">edit</i><br>Edit</button><button onclick="deleteProduct1('+product.pro_id+')" type="button" class="btn btn-sm rounded-circle bg-white shadow-ng mr-1" style="width: 60px; height: 60px;color: #DAAB59;font-size: 10px;"><i class="material-icons">delete</i><br>Delete</button>';
+
+                $('#productList2').append('<div id="jhk-'+product.pro_id+'" class="ramb shadow-ng col-12 col-md-12 py-3 rounded-lg my-2"><div class="row"><div class="col-3"><img src="'+image+'" class="img-fluid rounded-circle shadow"></div><div class="h-100 my-auto col-4 p-0 m-0 font-weight-bold text-dark pr-1">'+name+'<div class="font-weight-light mt-1" style="color: #53BF77; font-size: 14px;">'+quan+'</div></div><div class="col-5 px-0 my-auto text-right">'+btn+'</div></div></div>');
+            });
+            //console.log(data);
+        }).catch(err => {
+            console.log('sorry, we could not fetch products');
+        })
+    }
+
+    //Clear search
+    function clearSearch() {
+        $('#clearSearch').hide();
+        $('#productSearch').val('');
+
+        getTypeProducts();
+    }
+
+    //Clear search
+    function clearSearch2() {
+        $('#clearSearch2').hide();
+        $('#productSearch2').val('');
+
+        let value = $('#stock_type').val();
+        setTypePulled(value);
+    }
+
+    //Fetch products by search input
+    function fetchProduct(str){
+        if(str.length < 3){
+            return false
+        }
+
+        $('#clearSearch').show();
+
+        let url = 'https://elparah.store/stocking/fred.php?q=0&name='+str
+
+        fetch(url)
+            .then((resp) => resp.json())
+            .then(function(data) {
+                $('#productList').html('');
+                let stock = localStorage.getItem('stockProductsNew');
+                stock = JSON.parse(stock);
+
+                data.forEach(function (product , index) {
+                    var value = $(stock).filter(function (i , n){
+                        return n.pro_id == product.pro_id;
+                    });
+
+                    let me = Object.values(value)[0];
+
+                    let image = product.image;
+                    image = 'https://elparah.store/admin/upload/'+image;
+                    let name = (product.pro_name).trim();
+
+                    if(me){
+                        $('#productList').append('<div id="item-'+product.pro_id+'" class="col-4 col-md-4 mx-0 px-1 mb-2"><div class="shadow mb-2 bg-white pro-item"><img onclick="getProducter2('+product.pro_id+')" src="'+ image +'" class="img-'+product.pro_id+' img-fluid w-75 rounded mx-auto d-block pt-2"><h6 class="pb-2 mt-3 pro-item-name text-center text-capitalize font-weight-bold text-dark">'+ name +'</h6><div id="chk-'+product.pro_id+'" class="added-icon"><i onclick="addProductNew1('+product.pro_id+')" class="fa fa-check-circle" aria-hidden="true" style="font-size: 30px;padding: 22%;"></i></div></div></div>');
+                    }else{
+                        $('#productList').append('<div id="item-'+product.pro_id+'" class="col-4 col-md-4 mx-0 px-1 mb-2"><div class="shadow mb-2 bg-white pro-item"><img onclick="addProductNew1('+product.pro_id+')" src="'+ image +'" class="img-'+product.pro_id+' img-fluid w-75 rounded mx-auto d-block pt-2"><h6 class="pb-2 mt-3 pro-item-name text-center text-capitalize font-weight-bold text-dark">'+ name +'</h6><div onclick="addProductNew1('+product.pro_id+')" id="adk-'+product.pro_id+'" class="add-icon"><i class="material-icons">add_circle_outline</i><!--<i class="fa fa-plus" aria-hidden="true" style="font-size: 18px;padding: 21.5%;"></i>--></div><div id="chk-'+product.pro_id+'" class="added-icon" style="display: none;"><i onclick="addProductNew1('+product.pro_id+')" class="fa fa-check-circle" aria-hidden="true" style="font-size: 30px;padding: 22%;"></i></div></div></div>');
+                    }
+                    /*onclick="addProduct('+product.pro_id+')"*/
+                    //$('#productList').append('<div id="item-'+product.pro_id+'" class="col-4 col-md-4 mx-0 px-1 mb-2"><div class="shadow mb-2 bg-white pro-item"><img onclick="addProductNew1('+product.pro_id+')" src="'+ image +'" class="img-'+product.pro_id+' img-fluid w-75 rounded mx-auto d-block pt-2"><h6 class="pb-2 mt-3 pro-item-name text-center text-capitalize font-weight-bold text-dark">'+ name +'</h6><div onclick="addProductNew1('+product.pro_id+')" id="adk-'+product.pro_id+'" class="add-icon"><i class="material-icons">add_circle_outline</i><!--<i class="fa fa-plus" aria-hidden="true" style="font-size: 18px;padding: 21.5%;"></i>--></div><div id="chk-'+product.pro_id+'" class="added-icon" style="display: none;"><i onclick="addProductNew1('+product.pro_id+')" class="fa fa-check-circle" aria-hidden="true" style="font-size: 30px;padding: 22%;"></i></div></div></div>');
+
+                });
+            })
+            .catch(function(error) {
+                alert('Sorry products could not be retrieved.')
+            });
+    }
+
+    //Fetch products by search barcode
+    function scanCode(str) {
+        //alert(str)
+        $('#barError').text('');
+
+        if (str=="") {
+            document.getElementById("productListB").innerHTML="";
+
+            return;
+        }
+        //console.log(str);
+        if (window.XMLHttpRequest) {
+
+            xmlhttp=new XMLHttpRequest();
+            xmlhttp.timeout = 5000;
+        } else {
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function() {
+
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+
+                var meta = JSON.parse(xmlhttp.responseText);
+                //console.log(meta)
+                if(meta === 0){
+                    $('#barError').text('No product with this barcode.');
+                }else if(meta.error == 1000){
+                    $('#singleProduct').html('');
+                    let name = meta.item.pro_name;
+                    let image = 'https://elparah.store/admin/upload/'+meta.item.image;
+                    $('#singleProduct').append('<span class="text-center" style="color: orangered;">Product alredy exist</span><div class="row p-1 pt-3"><img id="sample_image" src="'+image+'" class="img-fluid mx-auto w-50 h-75"></div><h4 class="text-dark font-weight-bold">'+name+'</h4><div class="my-4 mx-auto"><button type="button" class="btn btn-warning font-weight-bold bg-white mr-2" data-dismiss="modal">Cancel</button></div>')
+                    $('#SingleProductModal').modal('show');
+                }else{
+                    var resCount = Object.keys(meta).length;
+                    if(resCount === 1){
+                        $('#singleProduct').html('');
+                        let name = meta[0].pro_name;
+                        let image = 'https://elparah.store/admin/upload/'+meta[0].image;
+                        $('#singleProduct').append('<span class="text-center">Selected product</span><div class="row p-1 pt-3"><img id="sample_image" src="'+image+'" class="img-fluid mx-auto w-50 h-75"></div><h4 class="text-dark font-weight-bold">'+name+'</h4><div class="my-4 mx-auto"><button type="button" class="btn btn-warning font-weight-bold bg-white mr-2" data-dismiss="modal">Cancel</button><button type="button" onclick="addProductNew1('+meta[0].pro_id+')" class="btn btn-warning font-weight-bold px-4">Add</button></div>')
+                        $('#SingleProductModal').modal('show');
+                    }else if(resCount > 1){
+                        $('#doubleProduct').html('');
+                        meta.forEach(function (product , index) {
+                            let image = product.image;
+                            image = 'https://elparah.store/admin/upload/'+image;
+                            let name = (product.pro_name);
+                            $('#doubleProduct').append('<div class="ramb shadow-ng col-12 col-md-12 py-3 rounded-lg my-2"><div class="row"><div class="col-3"><img src="'+image+'" class="img-fluid rounded-circle shadow"></div><div class="h-100 my-auto col-5 p-0 m-0 font-weight-bold text-dark pr-1">'+name+'</div><div class="col-4 px-0 my-auto"><button onclick="addProductNew1('+product.pro_id+')" type="button" style="font-size:12px;" class="btn btn-outline-warning">Add product</button></div></div></div>');
+                        });
+
+                        $('#doubleProductModal').modal('show');
+                    }
+                }
+                document.getElementById('productBarcode').value ="";
+            }
+
+
+        }
+        xmlhttp.ontimeout = function (e) {
+            // XMLHttpRequest timed out. Do something here.
+            alert(" Request timeout.Please retry")
+
+        };
+        xmlhttp.open("GET","https://elparah.store/scan/addScan2.php?q="+encodeURIComponent(str),true);
+        xmlhttp.send();
+
+    }
+
+    //Load store products into local storage...
+    function getStoreProductFirst(){
+        fetch('https://elparah.store/onboarding/addProducts/store_products.php').then(response => {
+            return response.json();
+        }).then(data => {
+            localStorage.setItem('stockProductsNew' , JSON.stringify(data));
+            $('#counter').text(data.length);
+            $('#pa_count').text(data.length);
+        }).catch(err => {
+            console.log('sorry, we could not fetch stocked products');
+        })
+    }
+
+
+
+    //Fetch stock products by search input
+    function fetchStockProduct(str){
+        if(str.length < 3){
+            return false
+        }
+        $('#clearSearch2').show();
+        //let comma = '"';
+        //str = comma+str+comma;
+
+        /*$('#addProcess').hide();
+        $('#viewProcess').hide();*/
+
+        /*let data = localStorage.getItem('stockProducts');
+        data = JSON.parse(data);
+        console.log(data);
+        var search_product = $(data).filter(function (i , n){
+            return n.pro_name *= str;
+        });*/
+
+        //$("li:contains:not(" + yourtext + ")").removeClass('notify');
+        $('.ramb:not(:contains('+ str +'))').hide();
+
+        //console.log(search_product);
+
+        /*let product = Object.values(search_product)[0];
+        let image = product.image;
+        image = 'https://elparah.store/admin/upload/'+image;
+        let name = (product.pro_name).trim();
+
+        $('#productList').html('');
+
+        $('#productList').append('<div id="item-'+product.pro_id+'" class="col-4 col-md-4 mx-0 px-1 mb-2" onclick="addProduct('+product.pro_id+')"><div class="shadow mb-2 bg-white pro-item"><img src="'+ image +'" class="img-fluid w-75 rounded mx-auto d-block pt-2"><h6 class="pb-2 mt-3 pro-item-name text-center text-capitalize font-weight-bold text-dark">'+ name +'</h6><div id="adk-'+product.pro_id+'" class="add-icon"><i class="fa fa-plus" aria-hidden="true" style="font-size: 18px;padding: 20%;"></i></div><div id="chk-'+product.pro_id+'" class="added-icon" style="display: none"><i class="fa fa-check-circle" aria-hidden="true" style="font-size: 30px;padding: 22%;"></i></div></div></div>');
+*/
+    }
+
+    //Click btnPCount button
+    $('.btnPCount').click(function () {
+        //getStockProducts();
+        getStoreProducts();
+    });
+
+    $('#change_Stock').click(function () {
+        let quan = $('#c_quantity').val();
+        let cp = localStorage.getItem('c_CP');
+        let sp = localStorage.getItem('c_SP');
+        let ls = 0;
+
+        create_stock(quan,cp,sp,ls);
+    });
+
+    //Get all stocked products
+    function getStockProducts(){
+        fetch('https://elparah.store/stocking/stockprocess2.php').then(response => {
+            return response.json();
+        }).then(data => {
+            localStorage.setItem('stockProducts' , JSON.stringify(data));
+
+            $('#counter').text(data.length);
+            counter = data.length;
+            $('.add_h6').text('');
+            $('.add_h6').text('Added Products(' + counter + ')');
+
+
+            $('#productList2').html('');
+            data.forEach(function (product , index) {
+                let image = product.image;
+                image = 'https://elparah.store/admin/upload/'+image;
+                let name = (product.pro_name).trim();
+                $('#productList2').append('<div id="jhk-'+product.pro_detail_id+'" class="ramb shadow-ng col-12 col-md-12 py-3 rounded-lg my-2"><div class="row"><div class="col-3"><img src="'+image+'" class="img-fluid rounded-circle shadow"></div><div class="h-100 my-auto col-5 p-0 m-0 font-weight-bold text-dark pr-1">'+name+'</div><div class="col-4 px-0 my-auto"><button onclick="getProduct('+product.pro_detail_id+')" type="button" class="btn btn-outline-warning">Add quantity</button></div></div></div>');
+            });
+            //console.log(data);
+        }).catch(err => {
+            console.log('sorry, we could not fetch stocked products');
+        })
+    }
+
+    function getStockProductsC(){
+        fetch('https://elparah.store/onboarding/addProducts/getProductsType.php?q=4').then(response => {
+            return response.json();
+        }).then(data => {
+            counter = data;
+
+            $('#counter').text('');
+            $('#counter').text(counter);
+        }).catch(err => {
+            console.log('sorry, we could not fetch count of stocked products');
+        })
+    }
+
+    getStockProductsC();
+
+    //Get all store unstocked products
+    function getStockProducts2(){
+        fetch('https://elparah.store/stocking/stockprocess2.php').then(response => {
+            return response.json();
+        }).then(data => {
+            localStorage.setItem('stockProducts' , JSON.stringify(data));
+
+            $('#productList4').html('');
+            data.forEach(function (product , index) {
+                let image = product.image;
+                image = 'https://elparah.store/admin/upload/'+image;
+                let name = (product.pro_name).trim();
+                $('#productList4').append('<div id="jhk-'+product.pro_detail_id+'" class="ramb shadow-ng col-12 col-md-12 py-3 rounded-lg my-2"><div class="row"><div class="col-3"><img src="'+image+'" class="img-fluid rounded-circle shadow"></div><div class="h-100 my-auto col-5 p-0 m-0 font-weight-bold text-dark pr-1">'+name+'</div><div class="col-4 px-0 my-auto"><button onclick="getProduct('+product.pro_detail_id+')" type="button" class="btn btn-outline-warning">Add quantity</button></div></div></div>');
+            });
+            //console.log(data);
+        }).catch(err => {
+            console.log('sorry, we could not fetch stocked products');
+        })
+    }
+
+    //Get all store products
+    function getStoreProducts(){
+        fetch('https://elparah.store/onboarding/addProducts/store_products.php').then(response => {
+            return response.json();
+        }).then(data => {
+            localStorage.setItem('stockProducts' , JSON.stringify(data));
+
+            $('#productList2').html('');
+            $('#counter').text(data.length);
+            $('#pa_count').text(data.length);
+
+            data.forEach(function (product , index) {
+                let image = product.image;
+                image = 'https://elparah.store/admin/upload/'+image;
+                let name = (product.pro_name).trim();
+                let btn = '';
+                let quan = '';
+
+
+
+                if(product.pro_quantity !== null){
+                    quan = product.pro_quantity + ' packs counted';
+                }
+                btn = '<button onclick="getProduct('+product.pro_detail_id+')" type="button" class="btn btn-sm rounded-circle bg-white shadow-ng mr-1 p-0" style="width: 60px; height: 60px;color: #DAAB59;font-size: 10px;"><i class="material-icons">edit</i><br>Edit</button><button onclick="deleteProduct1('+product.pro_id+')" type="button" class="btn btn-sm rounded-circle bg-white shadow-ng mr-1" style="width: 60px; height: 60px;color: #DAAB59;font-size: 10px;"><i class="material-icons">delete</i><br>Delete</button>';
+
+                $('#productList2').append('<div id="jhk-'+product.pro_id+'" class="ramb shadow-ng col-12 col-md-12 py-3 rounded-lg my-2"><div class="row"><div class="col-3"><img src="'+image+'" class="img-fluid rounded-circle shadow"></div><div class="h-100 my-auto col-4 p-0 m-0 font-weight-bold text-dark pr-1">'+name+'<div class="font-weight-light mt-1" style="color: #53BF77; font-size: 14px;">'+quan+'</div></div><div class="col-5 px-0 my-auto text-right">'+btn+'</div></div></div>');
+            });
+            $('.wrap-loading').hide();
+            //console.log(data);
+        }).catch(err => {
+            console.log('sorry, we could not fetch stocked products');
+        })
+    }
+
+    //Get all storetype products
+    function getStoreTypeProducts2(){
+        fetch('https://elparah.store/onboarding/addProducts/store_type_products.php?q=4').then(response => {
+            return response.json();
+        }).then(data => {
+            localStorage.setItem('storeTypeProducts' , JSON.stringify(data));
+
+            $('#productList2').html('');
+            $('#counter').text(data.length);
+            $('#pa_count').text(data.length);
+
+            let stock = localStorage.getItem('stockProducts');
+            stock = JSON.parse(stock);
+
+            data.forEach(function (product , index) {
+                let image = product.image;
+                image = 'https://elparah.store/admin/upload/'+image;
+                let name = (product.pro_name).trim();
+                let btn = '';
+                let quan = '';
+
+
+
+                var product = $(data).filter(function (i , n){
+                    return n.pro_detail_id == id;
+                });
+            });
+            $('.wrap-loading').hide();
+            //console.log(data);
+        }).catch(err => {
+            console.log('sorry, we could not fetch stocked products');
+        })
+    }
+
+    $('.back-icon').click(function () {
+        $('#viewProcess').show();
+        $('#page-header').show();
+        $('#addStockProcess').hide();
+        $('#addedProcessP').hide();
+        $('#changeStockProcess').hide();
+        $('#viewCart').hide();
+        $('#savedCart').hide();
+    });
+
+    //Get single product for stocking
+    function getProduct(id){
+        $('#addProcess').hide();
+        $('#viewProcess').hide();
+        //$('#page-header').hide();
+
+        let data = localStorage.getItem('stockProducts');
+        data = JSON.parse(data);
+        var search_product = $(data).filter(function (i , n){
+            return n.pro_detail_id == id;
+        });
+
+        let product = Object.values(search_product)[0];
+        let image = product.image;
+        image = 'https://elparah.store/admin/upload/'+image;
+        let name = (product.pro_name).trim();
+        let quant1 = product.pro_quantity;
+        let C_P = product.Cost_Price;
+        let S_P = product.Selling_Price;
+
+        $('#quantity').val(quant1);
+        $('#cost_price').val(C_P);
+        $('#selling_price').val(S_P);
+        $('#lowest_stock')
+        if(quant1 === null || quant1 === 0){
+            $('#quantity').val(0);
+        }
+        if(C_P === null || C_P === 0){
+            $('#cost_price').val('');
+        }
+        if(S_P === null || S_P === 0){
+            $('#selling_price').val('');
+        }
+
+        $('#pro_detail_id-hide').val(product.pro_detail_id);
+        $('#pro_id-hide').val(product.pro_id);
+        $('#cover_name').text('');
+        $('#p_name_u').text('');
+        $('#cover_name').text(name);
+        $('#p_name_u').text(name);
+        $('#cover_image').attr('src' , image);
+        //console.log(product);
+
+        $('#addStockProcess').show();
+    }
+
+    //Quick add product...
+    function getProduct2(id){
+        $('#addProcess').hide();
+        $('#viewProcess').hide();
+
+        let data = localStorage.getItem('stockProducts');
+        data = JSON.parse(data);
+
+        var search_product = $(data).filter(function (i , n){
+            return n.pro_detail_id == id;
+        });
+
+        let product = Object.values(search_product)[0];
+        let image = product.image;
+        image = 'https://elparah.store/admin/upload/'+image;
+        let name = (product.pro_name).trim();
+
+        $('#pro_detail_id-hide').val(product.pro_detail_id);
+        $('#pro_id-hide').val(product.pro_id);
+        $('#cover_q_name1').text('');
+
+        $('#pro_q').text('');
+        if(product.pro_quantity === null){
+            $('#pro_q').text(0);
+        }else{
+            $('#pro_q').text(product.pro_quantity);
+        }
+
+        $('#cover_q_name1').text(name);
+        $('#sample_q_image1').attr('src' , image);
+        //console.log(product);
+
+        $('#quickAddProduct').show();
+    }
+
+    function changeProduct(id){
+        $('#addProcess').hide();
+        $('#viewProcess').hide();
+
+        let data = localStorage.getItem('stockProducts');
+        data = JSON.parse(data);
+
+        var search_product = $(data).filter(function (i , n){
+            return n.pro_detail_id == id;
+        });
+
+        let product = Object.values(search_product)[0];
+        let image = product.image;
+        image = 'https://elparah.store/admin/upload/'+image;
+        let name = (product.pro_name).trim();
+        localStorage.setItem('c_CP' , product.Cost_Price);
+        localStorage.setItem('c_SP' , product.Selling_Price);
+
+        $('#pro_detail_id-hide').val(product.pro_detail_id);
+        $('#pro_id-hide').val(product.pro_id);
+        $('#cover_name1').text('');
+        $('#p_name_u').text('');
+        $('#packs_add').text('');
+        $('#cover_name1').text(name);
+        $('#p_name_u').text(name);
+        $('#c_quantity').val(product.pro_quantity);
+        $('#packs_add').text(product.pro_quantity + ' packs added');
+        $('#cover_image1').attr('src' , image);
+        //console.log(product);
+        $('#page-header').hide();
+        $('#changeStockProcess').show();
+    }
+
+
+    getTypeProducts();
+</script>
+
+<script>
+    var snackbarContainer = document.querySelector('#demo-toast-example');
+    var showToastButton = document.querySelector('#add_Stock');
+
+    function no_data(){
+        'use strict';
+        var data = {message: ' Invalid Details  '};
+        snackbarContainer.MaterialSnackbar.showSnackbar(data);
+    }
+
+    function cp_sp(){
+        'use strict';
+        var data = {message: 'Cost and Selling price error '};
+        snackbarContainer.MaterialSnackbar.showSnackbar(data);
+        return false;
+    }
+
+    (function() {
+        'use strict';
+
+
+        showToastButton.addEventListener('click',function () {
+            var cp = parseFloat(document.querySelector('#cost_price').value);
+            var sp = parseFloat(document.querySelector('#selling_price').value);
+            var ls = parseFloat(document.querySelector('#lowest_stock').value);
+            var quantity = parseFloat($('#quantity').val());
+
+            if(ls <= 0 || isNaN(ls)){
+                ls = 10;
+            }
+
+            if(quantity <= 0 || isNaN(quantity)){
+                alert('Please enter a valid value for quantity');
+            }
+
+            if(quantity <= 0 || quantity.length <= 0 || isNaN(quantity) || cp > sp  || isNaN(cp) || isNaN(sp) || cp <= 0 || sp <= 0){
+                if(cp <= 0 || isNaN(cp)){
+                    //document.getElementById('cpError').innerText = "Please enter a value";
+                    //alert('Please enter a valid value for cost price');
+                    $('#CostPriceBypass').modal('show');
+                }
+
+                if(sp <= 0 || isNaN(sp)){
+                    //document.getElementById('spError').innerText = "Please enter a value";
+                    //alert('Please enter a valid value for selling price');
+                }
+                no_data()
+
+                return false;
+            }
+            else if(cp > sp )
+            {
+                cp_sp()
+            }
+            else{
+                if(cp.length <= 0)
+                {
+                    cp = 0
+                }
+                if(sp.length <= 0)
+                {
+                    sp = 0
+                }
+
+                create_stock(quantity,cp,sp,ls);
+
+                quantity = 1;
+            }
+        } );
+    }());
+
+    function clear(){
+        $('#quantity').val(1);
+        $('#cost_price').val('');
+        $('#selling_price').val('');
+        $('#q_quantity').val(1);
+        $('#qa_quantity').val('');
+        $('#q_selling_p').val('');
+    }
+
+    function create_stockCP(){
+        var sp = parseFloat(document.querySelector('#selling_price').value);
+        var ls = parseFloat(document.querySelector('#lowest_stock').value);
+        var quantity = parseFloat($('#quantity').val());
+
+        create_stock(quantity,0,sp,ls);
+    }
+
+    function create_stock(qan,cp,sp,ls) {
+        let de_pro_id = $('#pro_detail_id-hide').val();
+        let pro_id = $('#pro_id-hide').val();
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+            xmlhttp.timeout = 30000;
+        } else { // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                //getStockProducts2();
+                getStoreProducts();
+                $('#addProcess').hide();
+                $('#jhk-'+de_pro_id).hide();
+
+
+                $('#doneModal').modal('show');
+
+                setTimeout(function(){
+                    $('#changeStockProcess').hide();
+                    $('#addedProcessP').hide();
+                    $('#back-icon').show();
+                    $('#addStockProcess').hide();
+                    $('#viewProcess').show();
+                    $('#CostPriceBypass').modal('hide');
+                    $('#doneModal').modal('hide');
+                    clear();
+                }, 1500);
+
+                clear();
+            }
+        }
+        xmlhttp.ontimeout = function (e) {
+            // XMLHttpRequest timed out. Do something here.
+            alert(" Request timeout.Please retry")
+        };
+        xmlhttp.open("GET","https://elparah.store/stocking/createStockNew.php?pro_id="+pro_id+"&lowest_stock="+ls+"&quan="+qan+"&cp="+cp+"&sp="+sp+"&date="+cusdate+"&state="+chdate,true);
+        xmlhttp.send();
+
+    }
+
+    function add_to_cart2(){
+        let qan = $('#q_quantity').val();
+
+        create_stock2(qan,0,0,1);
+    }
+
+    function add_to_cart3(){
+        let qan = $('#qa_quantity').val();
+        let sp = $('#q_selling_p').val();
+
+        if(isNaN(sp) || sp == null || sp === ''){
+            sp = 0;
+        }
+
+        create_stock3(qan,0,sp,1);
+    }
+
+    function create_stock2(qan,cp,sp,ls) {
+        let de_pro_id = $('#pro_detail_id-hide').val();
+        let pro_id = $('#pro_id-hide').val();
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+            xmlhttp.timeout = 30000;
+        } else { // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                //getStockProducts2();
+
+                $('#SingleProductQuantityModal').modal('hide');
+
+                clear();
+            }
+        }
+        xmlhttp.ontimeout = function (e) {
+            // XMLHttpRequest timed out. Do something here.
+            alert(" Request timeout.Please retry")
+        };
+        xmlhttp.open("GET","https://elparah.store/stocking/createStockNew.php?pro_id="+pro_id+"&lowest_stock="+ls+"&quan="+qan+"&cp="+cp+"&sp="+sp+"&date="+cusdate+"&state="+chdate,true);
+        xmlhttp.send();
+
+    }
+
+    function create_stock3(qan,cp,sp,ls) {
+        let pro_id = $('#pro_id-hide').val();
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+            xmlhttp.timeout = 30000;
+        } else { // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                //getStockProducts2();
+
+
+                $('#doneModal').modal('show');
+
+                setTimeout(function(){
+                    $('#viewProcess').hide();
+                    $('#quickAddProduct').hide();
+                    $('#addProcess').show();
+                    $('#doneModal').modal('hide');
+                    clear();
+                }, 1500);
+
+            }
+        }
+        xmlhttp.ontimeout = function (e) {
+            // XMLHttpRequest timed out. Do something here.
+            alert(" Request timeout.Please retry")
+        };
+        xmlhttp.open("GET","https://elparah.store/stocking/createStockNew.php?pro_id="+pro_id+"&lowest_stock="+ls+"&quan="+qan+"&cp="+cp+"&sp="+sp+"&date="+cusdate+"&state="+chdate,true);
+        xmlhttp.send();
+
+    }
+
+</script>
+
+<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
+
+</body>
+</html>
